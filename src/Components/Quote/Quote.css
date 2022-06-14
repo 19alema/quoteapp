@@ -1,0 +1,36 @@
+.quoteBox {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1em ;
+}
+.quote {
+    border-left: 7px solid var(--borderColor);
+    padding-left:1em;
+    border-radius: 5px;
+    color: #27272a;
+}
+.author_profile {
+    margin-top: 4em;
+    padding: 1em 1em;
+    animation: 1s background ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #3f3f46;
+    border-top: 1px solid #3f3f46;
+}
+.author_profile p{
+  padding-bottom: 10px;
+  font-weight: var(--bold);
+}
+.author_profile span{
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.author_profile:hover {
+   background: var(--black);
+   color: #fff;
+   cursor: pointer;
+   border-radius: 4px;
+}

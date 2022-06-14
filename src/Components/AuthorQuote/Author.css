@@ -1,0 +1,32 @@
+ .quotes .author_profile {
+    display: none;
+}
+
+h4 {
+    text-align: center;
+    padding: 2em;
+    font-size: 1.5em;
+    
+}
+
+.quotes h3 {
+    font-size: 15px;
+    font-weight: var(--lightFont);
+}
+
+@media(max-width: 760px) {
+    h4 {
+        text-align: center;
+        padding: 1em;
+        font-size: 1em;
+        
+    }
+}
+@media(min-width: 800px) {
+   .quotes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+   }
+}

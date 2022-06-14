@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React,{useState, useEffect} from "react"
+import Quote from "./Components/Quote/Quote";
+import Author from "./Components/AuthorQuote/Author"
+import {Routes, Route} from "react-router-dom"
 function App() {
+  const [quote, setQuote] = useState([]);
+ 
+  const quoteUrl = `https://quote-garden.herokuapp.com/api/v3/quotes`;
+
+  // Random Quote Generator Function
+  const getRandomQuote = async (url) => {
+    fetch(url).then(res => res.json()).then(response => {
+      const randomNumber = Math.floor(Math.random() * Number(response.data.length));
+      setQuote(response.data[randomNumber])
+      // console.log(response.data[randomNumber])
+    })
+  }
+
+  useEffect(() => {
+     getRandomQuote(quoteUrl)
+  },[])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+       <Routes>
+       <Route path="/" element={<Quote quote = {quote.quoteText} id={quote._id} author={quote.quoteAuthor} type={quote.quoteGenre}/>} />
+        <Route path="/author/:name" element={<Author name={quote.quoteAuthor} />} />
+      </Routes>
+    
+
     </div>
   );
 }
